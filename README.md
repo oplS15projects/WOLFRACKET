@@ -21,9 +21,9 @@ To set up a racket Webserver with API landing points that interpret JSON input, 
 | 4 | Create a Server API Handler object | done |
 |4.1| Server API handler Documentation | done |
 |4.2| Generate proof of success| not-started |
-| 5 | Create a Mathematics object | not started |
-|5.1| Mathematics object Documentation | not started |
-|5.2| Generate proof of success| not started |
+| 5 | Create a Mathematics object | done |
+|5.1| Mathematics object Documentation | done |
+|5.2| Generate proof of success| done |
 | 6 | Create a Graphing object | not started |
 |6.1| Graphing object Documentation | not started |
 |6.2| Generate proof of success| not started |
