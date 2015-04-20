@@ -43,6 +43,47 @@ localhost:8080/api/not-a-valid-page
 API Resource not found.
 ```
 
+## Mathematical operations
+### math.rkt
 
+```
+(((my_math) 'add) 1 2)
+```
 
+3
 
+```
+(((my_math) 'subtract) 1 2)
+```
+
+-1
+
+```
+(((my_math) 'exponent) 1 2)
+```
+
+1
+
+```
+(((my_math) 'prime_check) 1)
+```
+false (here is wrong result)
+
+```
+(((my_math) 'divide) 1 2)
+```
+
+1/2
+
+```
+(((my_math) 'factorials) 12)
+```
+
+479001600
+(here is wrong result)
+
+```
+(((my_math) 'sinus) 2)
+```
+
+3.626860407847019
