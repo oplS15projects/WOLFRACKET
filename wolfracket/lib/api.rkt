@@ -23,6 +23,14 @@
 ;   @return     json    the calculated output or error message
 (define (api)
 
+    ; PARAMETERS
+    (define (get-param->string req param)
+    (if (eq? #f (bindings-assq (string->bytes/utf-8 param)
+                               (request-bindings/raw req)))
+        ""
+        (bytes->string/utf-8 (binding:form-value (bindings-assq (string->bytes/utf-8 param)
+                                                               (request-bindings/raw req))))))
+
     ;   RESPONSES
     ;   The api documentation page
     (define (api-home req)
@@ -33,8 +41,8 @@
     ;   The addition api method
     (define (api-add req)
             (response/xexpr
-                `(html  (head (title "ADD"))
-                        (body (p "Addition method")))))
+                (list 'html (list 'head (list 'title "ADD"))
+                        (list 'body (list 'p "Addition method") (list 'p (get-param->string req "p"))))))
 
     ;   The method not found page
     (define (api-404 req)
@@ -44,11 +52,10 @@
 
     ;   CONTROLLER
     ;   Delegates which method to call
-    (define (controller m)
-        (begin  (display m)
+    (define (controller m p)
         (cond ((equal? m "home") api-home)
               ((equal? m "add") api-add)
-              (else api-404))))
+              (else api-404)))
 
     controller)
 

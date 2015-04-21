@@ -8,8 +8,11 @@
          web-server/servlet
          web-server/servlet-env
          web-server/dispatch
-         web-server/dispatchers/dispatch-servlets)
+         web-server/dispatchers/dispatch-servlets
+         net/url-structs)
 
+(require net/url)
+(require web-server/http/request-structs)
 ;   Including the api, this is needed because the server has an api interface
 (include "api.rkt")
 
@@ -27,6 +30,14 @@
 ;   @return     json    the calculated output or error message
 (define (server-handler)
 
+    ; PARAMETERS
+    (define (get-param->string req param)
+        (if (eq? #f (bindings-assq (string->bytes/utf-8 param)
+                                   (request-bindings/raw req)))
+            ""
+            (bytes->string/utf-8 (binding:form-value (bindings-assq (string->bytes/utf-8 param)
+                                                                   (request-bindings/raw req))))))
+
     ;   PAGES
     ;   The home page
     (define (home req)
@@ -37,12 +48,18 @@
     (define (my-404 req)
             (response/xexpr
                 `(html  (head (title "404"))
-                        (body (p "Resource not found.")))))
+                        (body (p "Resource not found, api not accessed.")))))
 
     ;   API INTERFACE
-    (define (api-interface req [method "home"])
-        (begin  (display method)
-                (((api) method) req)))
+    (define (api-interface req [method "home"] [param "none"])
+        ;(begin (display req)
+                (((api) method param) req));)
+
+    ; test
+    (define (test req [arg ""])
+        (response/xexpr
+            `(html  (head (title "500"))
+                    (body (p "hello")))))
 
     ;   URL DISPATCHING
     ;   Recieve and process request
@@ -51,11 +68,14 @@
 
     ;   Determine url
     (define-values (dispatch url)
+        (begin (display url)
         (dispatch-rules
             [("home") home]
+            [("test" (string-arg)) test]
             [("api") api-interface]
             [("api" (string-arg)) api-interface]
-            [else my-404]))
+            [("api" (string-arg) (string-arg)) api-interface]
+            [else my-404])))
 
     ;   SERVER
     ;   start server
