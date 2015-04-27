@@ -30,14 +30,6 @@
 ;   @return     json    the calculated output or error message
 (define (server-handler)
 
-    ; PARAMETERS
-    (define (get-param->string req param)
-        (if (eq? #f (bindings-assq (string->bytes/utf-8 param)
-                                   (request-bindings/raw req)))
-            ""
-            (bytes->string/utf-8 (binding:form-value (bindings-assq (string->bytes/utf-8 param)
-                                                                   (request-bindings/raw req))))))
-
     ;   PAGES
     ;   The home page
     (define (home req)

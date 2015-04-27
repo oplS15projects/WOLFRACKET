@@ -1,5 +1,5 @@
 
-#lang racket
+
 (require math/number-theory)
 (require math)
 (require math/base)
@@ -7,41 +7,63 @@
 
 (define (my_math)
 
- (define my_add
-    (lambda (x y) (+ x y)))
- (define my_subtract
-    (lambda (x y) (- x y)))
- (define my_expt
-   (lambda (base-number power-number) (expt base-number power-number)))
-  (define my_div
-    (lambda (x y) (/ x y)))
-  (define isprime
-    (lambda (x) (prime? x)))
-  (define logarithm
-    (lambda (x) (log x)))
-  (define my_factorial
-    (lambda (x) (factorial x)))
-  (define my_sinh
-    (lambda (x) (sinh x)))
-(define my_cosin
-  (lambda (x) (cosh)))
-  (define my_root
-    (lambda (x y) (integer-root x y)))
+    (define my_add
+        (lambda (lst) (list (+ (car lst) (cadr lst)))))
 
-  (define (handler)
-   (lambda (action)
-    (cond ((eq? action 'subtract) my_subtract)
-          ((eq? action 'add) my_add)
-          ((eq? action 'exponent) my_expt)
-          ((eq? action 'divide) my_div)
-          ((eq? action 'prime_check) isprime)
-          ((eq? action 'nat_log) logarithm)
-          ((eq? action 'factorials) my_factorial)
-          ((eq? action 'sinus) my_sinh)
-          ((eq? action 'cosh) my_cosin)
-          ((eq? action 'root) my_root)
-        ;  ((eq? action '))
-         ; ((eq? action '))
-          (else #f))))
+    (define my_subtract
+        (lambda (lst) (list (- (car lst) (cadr lst)))))
 
-  (handler))
+    (define my_multiply
+        (lambda (lst) (list (* (car lst) (cadr lst)))))
+
+    (define my_divide
+        (lambda (lst) (list (/ (car lst) (cadr lst)))))
+
+    (define my_exponent
+        (lambda (lst) (list (expt (car lst) (cadr lst)))))
+
+
+
+    (define my_prime
+        (lambda (lst) (list (prime? (car lst)))))
+
+
+    (define my_logarithm
+        (lambda (lst) (list (log (car lst)))))
+
+    (define my_factorial
+        (lambda (lst) (list (factorial (car lst)))))
+
+
+
+    (define my_sin
+        (lambda (lst) (list (sin (car lst)))))
+
+    (define my_cos
+        (lambda (lst) (list (cos (car lst)))))
+
+    (define my_sqrt
+        (lambda (lst) (list (sqrt (car lst)))))
+
+
+
+    (define (handler)
+        (lambda (action)
+            (cond   ((eq? action "add") my_add)
+                    ((eq? action "subtract") my_subtract)
+                    ((eq? action "multiply") my_multiply)
+                    ((eq? action "divide") my_divide)
+                    ((eq? action "exponent") my_exponent)
+
+                    ((eq? action "prime") my_prime)
+
+                    ((eq? action "logarithm") my_logarithm)
+
+                    ((eq? action "factorial") my_factorial)
+
+                    ((eq? action "sin") my_sin)
+                    ((eq? action "cos") my_cos)
+                    ((eq? action "sqrt") my_sqrt)
+                    (else #f))))
+
+    (handler))
