@@ -60,17 +60,11 @@ MJ code here
 
 #How to Download and Run
 1. Clone the repository
-```
-git clone https://github.com/oplS15projects/WOLFRACKET.git
-```
+  ``` git clone https://github.com/oplS15projects/WOLFRACKET.git ```
 2. change directory to WOFRACKET/wolfracket/lib/
-```
-cd WOFRACKET/wolfracket/lib/
-```
+  ``` cd WOFRACKET/wolfracket/lib/ ```
 3. Run
-```
-racket driver.rkt
-```
+  ``` racket driver.rkt ```
 4. In the web browser navigate to localhost:8080/home
 5. Chose a method in the dropdown and enter values
   * The method has a number of parameters it requires so (2) means the first two parameters),binary operations are in the form of 1st-param OPERATION 2nd-param, and unary are in the form of OPERATION( 1st-param )
