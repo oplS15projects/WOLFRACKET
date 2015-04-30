@@ -28,7 +28,7 @@ To set up a racket Webserver with API landing points that interpret JSON input, 
 |6.1| Graphing object Documentation | not started |
 |6.2| Generate proof of success| not started |
 |7  | Integrate objects | done |
-|7.1| Generate proof of success| done |
+|7.1| Generate proof of success| done  |
 
 ### Second Milestone Goals
 Items 3 - 4.2 , 6.1 - 7.1
