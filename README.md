@@ -10,10 +10,10 @@ To set up a racket Webserver with API landing points that interpret JSON input, 
 
 ##Screenshot
 An image of the form input before a value is retrieved.
-![screenshot showing env diagram](images/before.png)
+![screenshot showing env diagram](img/before.png)
 
 An image of the form input after an addition call.
-![screenshot showing env diagram](images/after.png)
+![screenshot showing env diagram](img/after.png)
 
 ##Concepts Demonstrated
 Identify the OPL concepts demonstrated in your project. Be brief. A simple list and example is sufficient.
