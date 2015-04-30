@@ -1,4 +1,4 @@
-# FP7-webpage Title of Project
+# WOLFRACKET
 
 ##Authors
 Jose Flores
