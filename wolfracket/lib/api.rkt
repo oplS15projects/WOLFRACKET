@@ -4,8 +4,12 @@
 ;   This file holds the api.
 
 ;   REQUIRES
-(require web-server/servlet
+(require racket/include
+         web-server/servlet
          web-server/servlet-env)
+
+(include "param-handler.rkt")
+(include "math.rkt")
 
 ;   @name api
 ;
@@ -23,20 +27,65 @@
 ;   @return     json    the calculated output or error message
 (define (api)
 
+
+
     ;   RESPONSES
-    ;   The api documentation page
+    ;   The API Documentation page
     (define (api-home req)
             (response/xexpr
                 `(html  (head (title "API"))
                         (body (p "Racket Mathematics and Graphing API Project Documentation Page")))))
 
-    ;   The addition api method
-    (define (api-add req)
-            (response/xexpr
-                `(html  (head (title "ADD"))
-                        (body (p "Addition method")))))
+    ;   API Function Execution
+    (define (api-func method param min-param req)
+        (response/xexpr
+                #:mime-type #"application/json"
+                (string-join (list "["
+                                    (((param-handler) "list->string" )
+                                        (if (param-count? min-param (((param-handler) "string->list") req
+                                                                                            param))
+                                            (((my_math) method) (((param-handler) "string->list") req
+                                                                                            param))
+                                            (list "\"error\"")))
+                                    "]")
+                             "")))
 
-    ;   The method not found page
+    (define (param-count? min-param lst)
+        (>= (length lst) min-param))
+
+    ;   The API Methods
+    (define (api-add req)
+        (api-func "add" "j" 2 req))
+
+    (define (api-subtract req)
+        (api-func "subtract" "j" 2 req))
+
+    (define (api-exponent req)
+        (api-func "exponent" "j" 2 req))
+
+    (define (api-divide req)
+        (api-func "divide" "j" 2 req))
+
+    (define (api-prime req)
+        (api-func "prime" "j" 1 req))
+
+    (define (api-logarithm req)
+        (api-func "logarithm" "j" 1 req))
+
+    (define (api-factorial req)
+        (api-func "factorial" "j" 1 req))
+
+    (define (api-sin req)
+        (api-func "sin" "j" 1 req))
+
+    (define (api-cos req)
+        (api-func "cos" "j" 1 req))
+
+    (define (api-sqrt req)
+        (api-func "sqrt" "j" 1 req))
+
+
+    ;   The Method not found page
     (define (api-404 req)
             (response/xexpr
                 `(html  (head (title "404"))
@@ -44,11 +93,20 @@
 
     ;   CONTROLLER
     ;   Delegates which method to call
-    (define (controller m)
-        (begin  (display m)
-        (cond ((equal? m "home") api-home)
-              ((equal? m "add") api-add)
-              (else api-404))))
+    (define (controller action p)
+        (begin  ;(set! msg m)
+                (cond ((equal? action "home") api-home)
+                      ((equal? action "add") api-add)
+                      ((equal? action "subtract") api-subtract)
+                      ((equal? action "exponent") api-exponent)
+                      ((equal? action "divide") api-divide)
+                      ((equal? action "prime") api-prime)
+                      ((equal? action "logarithm") api-logarithm)
+                      ((equal? action "factorial") api-factorial)
+                      ((equal? action "sin") api-sin)
+                      ((equal? action "cos") api-cos)
+                      ((equal? action "sqrt") api-sqrt)
+                      (else api-404))))
 
     controller)
 
