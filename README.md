@@ -15,9 +15,9 @@ To set up a racket Webserver with API landing points that interpret JSON input, 
 | 2 | Allow for multiple landing pages associated to the API methods | done |
 |2.1| Web API Documentation | done |
 |2.2| Generate proof of success| done |
-| 3 | Create a JSON processor object | started |
-|3.1| JSON object Documentation | not started |
-|3.2| Generate proof of success| not started |
+| 3 | Create a JSON processor object | replaced - param handler class |
+|3.1| JSON object Documentation | skipped |
+|3.2| Generate proof of success| skipped |
 | 4 | Create a Server API Handler object | done |
 |4.1| Server API handler Documentation | done |
 |4.2| Generate proof of success| not-started |
@@ -27,18 +27,18 @@ To set up a racket Webserver with API landing points that interpret JSON input, 
 | 6 | Create a Graphing object | not started |
 |6.1| Graphing object Documentation | not started |
 |6.2| Generate proof of success| not started |
-|7  | Integrate objects | not started |
-|7.1| Generate proof of success| not started |
+|7  | Integrate objects | done |
+|7.1| Generate proof of success| done  |
 
-### First Milestone Goals (04-13)
-During the First Milestone we will have turned in Client related items (Items 1 - 2.2) as well as the Mathematics portion (Items 5 - 5.2)
+### Second Milestone Goals
+Items 3 - 4.2 , 6.1 - 7.1
 
 ## Group Responsibilities
 ### Jose Flores
-Will be responsible for the transmission and interpretation of data, so will be primarily working with (Items 1 - 4.2)
+Will be working with a parameter handler and integrating the application (Item 3 - 4.2 , 6.1 - 7.1 )
 
 ### Munkhjargal Narmandakh
-Will be responsible for the production of results, so will be focusing on (Items 5 - 6.2)
+Will be responsible for the the Graphing object (Items 6 - 6.2)
 
 ### Results & Documentation
 Documentation can be found in wolfracket/documentation.md
