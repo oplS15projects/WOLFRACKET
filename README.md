@@ -33,30 +33,49 @@ An image of the form input after an addition call.
 
 
 ##Favorite Lines of Code
-####Mark (a team member)
-Each team member should identify a favorite line of code, expression, or procedure written by them, and explain what it does. Why is it your favorite? What OPL philosophy does it embody?
-Remember code looks something like this:
+#### Jose
+
+This is my favorite piece of code because it was the hardest part of the puzzle to solve to create the server API that accessed GET variables.
+
+I developed this through the extensive research and having to make a stackoverflow [article][stackoverflow], having to request external help to solve it.
+
+The explanation of what I was trying to do is in the [article][stackoverflow].
+
+The code does not use any specific OPL philosophies, except for using what is present and building up from it. I could have written a parser to extract the values I needed but this uses native procedures and structures to achieve the same result.
+
 ```scheme
-(map (lambda (x) (foldr compose functions)) data)
-```
-####Lillian (another team member)
-This expression reads in a regular expression and elegantly matches it against a pre-existing hashmap....
-```scheme
-(let* ((expr (convert-to-regexp (read-line my-in-port)))
-             (matches (flatten
-                       (hash-map *words*
-                                 (lambda (key value)
-                                   (if (regexp-match expr key) key '()))))))
-  matches)
+(define (get-param->string req param)
+    (if (eq? #f (bindings-assq (string->bytes/utf-8 param)
+                               (request-bindings/raw req)))
+        ""
+        (bytes->string/utf-8 (binding:form-value (bindings-assq (string->bytes/utf-8 param)
+                                                               (request-bindings/raw req))))))
 ```
 
-##Additional Remarks
-Anything else you want to say in your report. Can rename or remove this section.
+#### Munkhjargal
+Description
+```scheme
+MJ code here
+```
 
 #How to Download and Run
-You may want to link to your latest release for easy downloading by people (such as Mark).
++ Clone the repository
+```
+git clone https://github.com/oplS15projects/WOLFRACKET.git
+```
++ change directory to WOFRACKET/wolfracket/lib/
+```
+cd WOFRACKET/wolfracket/lib/
+```
++ Run
+```
+racket driver.rkt
+```
++ In the web browser navigate to localhost:8080/home
++ Chose a method in the dropdown and enter values
+++ The method has a number of parameters it requires so (2) means the first two parameters),binary operations are in the form of 1st-param OPERATION 2nd-param, and unary are in the form of OPERATION( 1st-param )
++ Submit entry for result
 
-Include what file to run, what to do with that file, how to interact with the app when its running, etc.
 
 <!-- Links -->
 [racket/include]: http://docs.racket-lang.org/reference/include.html
@@ -69,3 +88,4 @@ Include what file to run, what to do with that file, how to interact with the ap
 [web-server/dispatchers/dispatch-servlets]: http://docs.racket-lang.org/web-server-internal/dispatch-servlets.html
 [net/url-structs]: http://docs.racket-lang.org/net/url.html#%28mod-path._net%2Furl-structs%29
 [web-server/formlets/input]: http://docs.racket-lang.org/web-server/formlets.html#%28mod-path._web-server%2Fformlets%2Finput%29
+[stackoverflow]: http://stackoverflow.com/questions/29690651/how-do-you-access-get-parameters-in-racket-server-application/29765739#29765739
