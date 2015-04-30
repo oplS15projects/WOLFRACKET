@@ -46,7 +46,7 @@
                                                                                             param))
                                             (((my_math) method) (((param-handler) "string->list") req
                                                                                             param))
-                                            (list "error")))
+                                            (list "\"error\"")))
                                     "]")
                              "")))
 

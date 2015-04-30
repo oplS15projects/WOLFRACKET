@@ -20,8 +20,8 @@
         (cond ((number? input) (number->string input))
               ((string? input)  input)
               ((boolean? input) (if input
-                                 "true"
-                                 "false"))
+                                 "\"true\""
+                                 "\"false\""))
              (else "error")))
 
     (define (cs-string->list str)
