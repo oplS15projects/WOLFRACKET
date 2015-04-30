@@ -59,22 +59,22 @@ MJ code here
 ```
 
 #How to Download and Run
-+ Clone the repository
+1. Clone the repository
 ```
 git clone https://github.com/oplS15projects/WOLFRACKET.git
 ```
-+ change directory to WOFRACKET/wolfracket/lib/
+2. change directory to WOFRACKET/wolfracket/lib/
 ```
 cd WOFRACKET/wolfracket/lib/
 ```
-+ Run
+3. Run
 ```
 racket driver.rkt
 ```
-+ In the web browser navigate to localhost:8080/home
-+ Chose a method in the dropdown and enter values
-++ The method has a number of parameters it requires so (2) means the first two parameters),binary operations are in the form of 1st-param OPERATION 2nd-param, and unary are in the form of OPERATION( 1st-param )
-+ Submit entry for result
+4. In the web browser navigate to localhost:8080/home
+5. Chose a method in the dropdown and enter values
+  * The method has a number of parameters it requires so (2) means the first two parameters),binary operations are in the form of 1st-param OPERATION 2nd-param, and unary are in the form of OPERATION( 1st-param )
+6. Submit entry for result
 
 
 <!-- Links -->
