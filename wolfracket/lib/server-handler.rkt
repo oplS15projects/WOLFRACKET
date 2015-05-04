@@ -10,10 +10,10 @@
          web-server/dispatch
          web-server/dispatchers/dispatch-servlets
          net/url-structs
-         web-server/formlets/input)
+         web-server/formlets/input
+         net/url
+         web-server/http/request-structs)
 
-(require net/url)
-(require web-server/http/request-structs)
 ;   Including the api, this is needed because the server has an api interface
 (include "api.rkt")
 
